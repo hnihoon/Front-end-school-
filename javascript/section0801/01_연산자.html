@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>01_연산자.html</title>
+</head>
+<body>
+
+    <h3>연산자</h3>
+
+    <script>
+
+        // 1. () 최우선 연산자
+        document.write(3+4+5/2);
+        document.write((3+4+5)/2);
+        document.write("<hr>");
+
+        // 2. 대입연산자
+        let num=3; //초기값
+
+        num=num+2; //3+2
+        document.write(num+"<hr>"); //5
+
+        num+=2; //num = num(5) + 2;
+        document.write(num+"<hr>"); //7
+
+        num=num-3;
+        document.write(num+"<hr>"); //4
+
+        num-=3; //num = num(4) - 3;
+        document.write(num+"<hr>"); //1
+
+        num*=10; //num = num(1) * 10;
+        document.write(num+"<hr>"); //10
+
+        num/=2;  //num = num(10) / 2;
+        document.write(num+"<hr>"); //5
+
+        num%=2;  //num = num(5) % 2;
+        document.write(num+"<hr>"); //1
+
+
+        //3. 1 증감연산자
+        let a=3;
+
+        a=a+1//3+1
+        document.write(a+"<hr>"); //4
+
+        a+=1; //4+1
+        document.write(a+"<hr>"); //5
+
+        a++; //5+1
+        document.write(a+"<hr>"); //6
+
+        ++a; //6+1
+        document.write(a+"<hr>"); //7
+
+        //////////////////////////////////////
+        let b=3;
+
+        b=b-1; //3-1
+        document.write(b+"<hr>"); //2
+
+        b-=1; //2-1
+        document.write(b+"<hr>"); //1
+
+        b--;
+        document.write(b+"<hr>"); //0
+
+        --b;
+        document.write(b+"<hr>"); //-1
+
+        //1증감연산자는 다른 계산식과 같이 사용할 경우 주의!!
+        let c=10;
+        let d=20;
+
+        let i=c++;  //let i=c  나중에 증가
+                    //c=c+1
+
+        let j=--d;  //d=d-1
+                    //let j=d
+
+        document.write(c+d+i+j); //11+19+10+19
+        document.write(b+"<hr>");
+
+        //4. 삼항 연산자
+        //  형식) (조건) ? 참 : 거짓
+
+        let n=3;
+        document.write(n*-1); //이항  3*-1
+        document.write(-n); //단항    3*-1
+        document.write("<hr>"); 
+
+        // 문1) 절대값을 구하시오 (양수값을 구하시오)
+
+       let su=5;
+       let result=(su<0) ? su*-1 : su;
+                //-5<0    -5*-1  
+
+       document.write(su + "절대값:" + result);
+       document.write("<hr>");
+
+       //문2) 세개의 수중에서 가장 큰값(최대값)을 구하시오
+        let x=1, y=7, z=3;
+
+        let big = x>y ? x : y;
+
+        big= big >z ? big : z;
+        document.write(big);     
+        
+        
+    </script>
+    
+</body>
+</html>
