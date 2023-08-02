@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>06_while.html</title>
+</head>
+<body>
+    
+    <h3>while과 do~while 반복문</h3>
+
+    <script>
+        
+        //1. while문
+        let a = 1;
+        while(a<=3) {
+            document.write(a);
+            document.write("JAVA");
+            a++;
+        }
+        document.write("<hr>");
+
+        /*
+            while(1<=3) {1 JAVA a++}
+            while(2<=3) {2 JAVA a++}
+            while(3<=3) {3 JAVA a++}
+            while(4<=3) 종료
+        */
+
+        document.write(a);  //4
+        document.write("<hr>");
+
+        //2. do~while문
+        let b=1;
+        do{
+            document.write(b);
+            document.write("Python<hr>");
+            b++;
+        } while(b<=3);
+        /*
+            do {1 Python b++} while(2<=3)
+            do {2 Python b++} while(3<=3)
+            do {3 Python b++} while(4<=3) 종료
+        */ 
+
+        //3. while문과 do~while문의 차이
+        let c=2;
+        while(c<0){ //거짓 : 실행안됨 XXX
+            document.write("SEOUL");
+            c++;
+        }
+
+        do{ //일단 실행 조건은 나중에
+            document.write("JEJU<hr>");
+            c++
+        } while(c<0);
+        //do { JEJU c=2+1} while(3<0)
+        //do~while문은 조건이 틀리더라도 무조건 1번 수행된다.
+        document.write(c);
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>03_조건문연습문제.html</title>
+</head>
+<body>
+
+    <h3>조건문 연습문제</h3>
+
+    <script>
+        //문제1) 평균점수에 따라서 A,B,C,D,F 학점을 출력하시오(switch)
+        // let kor = 100; eng  = 100; mat = 100;
+        // let aver=parseInt(kor+eng+mat/3);
+        // let avera, averb, averc, averd, averf = 0;
+
+        // if(aver > 90){
+        //     avera = aver;
+        // } else if (aver > 80){
+        //     averb = aver;
+        // } else if (aver > 70){
+        //     averc = aver;
+        // }else if (aver > 60){
+        //     averd = aver;
+        // } else {
+        //     averf = aver;
+        // }
+
+        // switch(aver) {
+        //     case avera : document.write("A학점 입니다.") 
+        //     break;
+        //     case averb : document.write("B학점 입니다.") 
+        //     break;
+        //     case averc : document.write("C학점 입니다.") 
+        //     break;
+        //     case averd : document.write("D학점 입니다.") 
+        //     break;
+        //     case averf : document.write("F학점 입니다.") 
+        //     break;
+        // }
+
+        //문제2) 연산기호(op)에 따라 결과값을 출력하시오
+        // let i=3, j=5;
+        // let op="/";     //+ - * /
+
+        // switch(op){
+        //     case "+" : document.write(String(i) + " + " + String(j) + " = " + i + j);
+        //     break;
+        //     case "-" : document.write(String(i) + " - " + String(j) + " = " + i - j);
+        //     break;
+        //     case "*" : document.write(String(i) + " * " + String(j) + " = " + i * j);
+        //     break;
+        //     case "/" : document.write(String(i) + " / " + String(j) + " = " + i / j);
+        //     break;
+        // }
+
+        // document.write("<hr>");
+
+        //문제3) 
+        //      - 나이 : 올해년도 - 태어난년도
+        //      - 성별 : 1 도는 3 남자, 2 또는 4 여자
+
+        // let a = 931004;
+        // let b = parseInt(a/10000);
+        // document.write(b);
+        // document.write("<hr>");
+        // let age = 23 - b;
+
+        // let a2 = 4000000
+        // let b2 = parseInt(a2/1000000);
+        // document.write(b2);
+        // document.write("<hr>")
+
+        // let gender = "";
+        // let myYear = 0;
+        // let myCode = 0;
+        // if(b2 == 1) {
+        //     gender = "남자";
+        //     myYear = 19;
+        // } else if(b2 == 3) {
+        //     gender = "남자";
+        //     myYear = 20;
+        // } else if(b2 == 2){
+        //     gender = "여자"
+        //     myYear = 19;
+        // } else if(b2 == 4){
+        //     gender = "여자";
+        //     myYear = 20;
+        // }
+        
+        
+
+        // switch(b2){
+        //     case  1: document.write(a + " - " + a2 + " : " + myYear + b + "년생 " + gender + "입니다.");
+        //     break;
+        //     case  3: document.write(a + " - " + a2 + " : " + myYear + b + "년생 " + gender + "입니다.");
+        //     document.write(); 
+        //     break;
+
+        //     case 2: document.write(a + " - " + a2 + " : " + myYear + b + "년생 " + gender + "입니다.");
+        //     break;
+        //     case 4: document.write(a + " - " + a2 + " : " + myYear + b + "년생 " + gender + "입니다.");
+        //     document.write();
+        //     break;
+        //     default : document.write("잘못 입력하셨습니다.");
+        // }
+
+        /////////////////////////////////////////////////////////////////////////////////////////////////////////
+        // 강사님버전
+
+        //문제1) 평균점수에 따라서 A,B,C,D,F 학점을 출력하시오(switch)
+        let kor = 100, eng = 100, mat = 80;
+        let aver=parseInt((kor+eng+mat)/3);
+        
+        switch(parseInt(aver/10)){
+            case 10: 
+            case 9: document.write("A<hr>"); break;
+            case 8: document.write("B<hr>"); break;
+            case 7: document.write("C<hr>"); break;
+            case 6: document.write("D<hr>"); break;
+            default : document.write("F<hr>"); break;
+        }
+
+        //문제2)
+        let i=3, j=5;
+        let op = "+"; 
+        let result = 0;
+
+        switch(op){
+            case "+": result=i+j; break;
+            case "-": result=i-j; break;
+            case "*": result=i*j; break;
+            case "/": result=i/j; break;
+        }
+
+        document.write(i + op + j + "=" + result);
+        document.write("<hr>");
+
+        //문제3)
+        let myYear = parseInt("19");    //태어난 년도
+        let myCode = parseInt("4")      //성별코드
+        let myAge = 0;
+
+        //태어난 년도 완성하기
+        switch(myCode){
+            case 1: 
+            case 2: myYear = myYear+1900; break;
+            case 3: 
+            case 4: myYear = myYear+2000; break;
+        }
+
+        //나이 구하기
+        myAge=2023-myYear
+        document.write("나이 : " + myAge + "<hr>")
+
+        //성별구하기
+        switch(myCode%2){
+            case 0 : document.write("성별 : 여자<hr>"); break;
+            case 1 : document.write("성별 : 남자<hr>"); break;
+        }
+
+        if(myCode==1 || myCode ==3){
+            document.write("성별 : 남자<hr>");
+        } else if(myCode == 2 || myCode == 4) {
+            document.write("성별 : 여자<hr>");
+
+        }
+
+
+    </script>
+    
+</body>
+</html>
