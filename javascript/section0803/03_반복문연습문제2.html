@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>03_반복문연습문제2.html</title>
+</head>
+<body>
+
+    <h3>반복문 연습문제</h3>
+
+    <script>
+
+     //문제1) 아래와 같이 출력하시오
+        /*
+            12345
+            23456
+            34567
+            45678
+            56789
+        */
+
+        //문제2)아래 그림과 같이 출력하시오
+            /*
+                @★★★
+                ★@★★
+                ★★@★
+                ★★★@            
+            */
+
+        //문제3) 아래와 같이 누적의 합을 출력하시오 (회전수 증가)
+            /*
+                1+ ... +10=55
+                1+ ... +20=210
+                1+ ... +30=465
+                
+                1+ ... +90=4095
+                1+ ... +100=5050            
+            */
+            
+    
+        //문제1)
+        // let num = 0;
+
+        // for(let i=1; i<=5; i++){
+        //     for(let j=1; j<=5; j++){
+        //         document.write(j+num);
+        //     }
+        //     num++;
+        //     document.write("<br>")
+        // }
+
+        // document.write("<hr>")
+
+        // //문제2) 
+        // for(let i=1; i<=4; i++){
+        //     for(let j=1; j<=4; j++){
+        //         if(i==j){
+        //             document.write("@")
+        //         } else {
+        //             document.write("★")
+        //         }
+        //     }
+        //     document.write("<br>")
+        // }
+
+        // document.write("<hr>")
+
+        // //문제3)
+        // let number = 0;
+
+        // for(let i=1; i<=10; i++) {
+        //     for(let j=1; j<=i*10; j++){
+        //         number+=j;
+        //     }
+        //     document.write(number);
+        //     document.write("<br>")
+        //     number = 0;
+        // }
+
+//////////////////////////////////////////////////////////
+
+        //강사님 버전
+
+        //문제1)
+        for(let a=0; a<5; a++) {
+            for(let b=a+1; b<=a+5; b=b+1){
+                document.write(b)
+            }
+            document.write("<br>")
+        }
+
+        //문제2)
+        for(let a=1; a<=4; a++){
+            for(let b=1; b<=4; b++){
+                if(a==b){
+                    document.write("@");
+                } else {
+                    document.write("★");
+                }
+            }
+            document.write("<br>")
+        }
+
+
+
+    </script>
+    
+</body>
+</html>

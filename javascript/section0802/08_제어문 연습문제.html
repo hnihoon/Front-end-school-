@@ -19,30 +19,63 @@
             예3) 운행거리 2900m -> 900m초과 (기본요금 900원+추가요금500원) = 1400원
         */
 
-        let distance = 2900;
-        let money = 900;
+        // let distance = 1100;
+        // let money = 900;
 
-        if(distance < 2000) {
-            money = 900;
-        }
+        // if(distance < 2000) {
+        //     money = 900;
+        // }
 
-        ///////////////////////////////
+        // /////////////////////////////////////////////////////////////////////
 
-        if(distance <= 2000) {
-            money = 900;
-        } else if(distance > 2000 && distance%200){
-            for(let i = 2000; i < distance; i=200+i){
-                money += 100;
-            }
-        } else if(distance > 2000 && !(distance%200)){
-            for(let i = 2000; i < distance; i=200+i){
-                money += 100;
-            }
-        }
+        // if(distance <= 2000) {
+        //     money = 900;
+        // } else if(distance > 2000 && distance%200){
+        //     for(let i = 2000; i < distance; i=200+i){
+        //         money += 100;
+        //     }
+        // } else if(distance > 2000 && !(distance%200)){
+        //     for(let i = 2000; i < distance; i=200+i){
+        //         money += 100;
+        //     }
+        // }
 
-        document.write(distance);
-        document.write("<hr>");
-        document.write(money);
+        // document.write(distance);
+        // document.write("<hr>");
+        // document.write(money);
+
+        //////////////////////////////////////////////////////////////////////////
+        
+
+        // 강사님 버전
+        // let distance = 3150;    //운행거리
+        // let total = 0;          //전체요금
+        // let overfee = 0;        //초과요금
+
+        // if(distance<=2000) {    //2000m까지는
+        //     total=900;
+        // } else {        //2000m초과 운행시
+
+        //     let exceed=distance -2000; //초과거리
+        //                                //예2) 3000-2000 = 1000
+        //                                //예3) 2900-2000 = 900
+        //                                //예4) 2250-2000 = 250
+        //     document.write("초과거리 : " + exceed + "<br>");
+
+        //     //초과요금 900/200 -> 4.5 -> 5
+        //     //        250/200 -> 1.2 - > 2
+        //     //Math.ceil(4.5) -> 5 소수점값 올림 함수
+        //     //Math.ceil(1.2) -> 2 소수점값 올림 함수
+        //     overfee=Math.ceil(exceed/200)*100;
+        //     total=900+overfee
+        // }//if end
+
+        // document.write("총운행거리 : " + distance + "<br>");
+        // document.write("기본요금 : 900<br>");
+        // document.write("추가요금 : " + overfee + "<br>");
+        // document.write("전체요금 : " + total + "<br>");
+
+        
     </script>
     
 </body>
