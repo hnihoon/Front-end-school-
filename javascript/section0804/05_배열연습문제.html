@@ -11,20 +11,88 @@
     <script>
 
         let num=[7, 8, -5, 9, 6];
-        let size=num.lengthl;   //5
+        let size = num.length;   //5
 
         document.write(num);
         document.write("<hr>")
 
         //문1)배열 요소의 전체 합을 구하시오
+        // let sum = 0;
+        // for(let i=0; i<size; i++){
+        //     sum += num[i];
+        // }
+        //     document.write(sum)
 
         //문2)음수의 갯수를 구하시오
+        // let ma = 0;
+        // for(let i=0; i<size; i++) {
+        //     if(num[i]<0){
+        //         ma++;
+        //     }
+        // }
+        // document.write(ma)
+
 
         //문3)최대값, 최소값을 각각 구하시오
+        // let max = 0;
+        // let min = 0;
+        // let sum = 0;
+        // for(let i=0; i<size; i++){
+            
+        // }
+
+        // document.write(max);
+        // document.write("<hr>");
+        // document.write(min);
+
+
 
         //문4)num[4]요소의 등수를 구하시오
 
-        
+        //방법1)
+      let max = 0;
+      let min = 0;
+      let rank = 0;
+      let count = 0;
+
+      for (let i = 0; i < size; i++) {
+        max = num[0];
+        rank++;
+        for (let j = 0; j < size; j++) {
+          if (max < num[j]) {
+            max = num[j];
+          } else {
+            min = num[j];
+          }
+        }
+
+        for (let k = 0; k < size; k++) {
+          if (max == num[k] && max != 0) {
+            document.write(
+              "num요소중" +
+                rank +
+                "등 요소는 " +
+                (count + 1) +
+                "요소(" +
+                max +
+                ") 입니다.<hr>"
+            );
+            num[k] = 0;
+          }
+          count++;
+        }
+        count = 0;
+      }
+
+      // 방법2)
+      // num.sort(function (a, b) {
+      //   return b - a;
+      // });
+      // for (let i = 0; i < size; i++) {
+      //   document.write(i + 1 + "등은 : " + num[i] + "<hr>");
+      // }
+
+
     </script>
 </body>
 </html>
