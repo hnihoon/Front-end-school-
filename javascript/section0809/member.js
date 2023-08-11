@@ -72,43 +72,46 @@ function validate(){
     // }
 
     //2) 아이디 글자갯수가 8~12사이 인지 확인하시오
-    // let uid=document.getElementById("uid").value;
 
-    // uid=uid.trim();
-    // if(uid.length<8 || uid.length<12){
-    //     alert("회원 ID는 8~12로 작성해주세요")
-    //     document.getElementById("uid").focus();
-    //     return false;
-    // }
+    let uid=document.getElementById("uid").value;
+    uid=uid.trim();
+    if(!(uid.length>=8 && uid.length<=12)){
+       alert("아이디 글자갯수 8~12사이 입력해 주세요");
+       document.getElementById("uid").focus();
+       return false;
+    }
     //3) 비밀번호 글자갯수가 5~10사이 인지 확인하시오
-    // let upw=document.getElementById("upw").value;
 
-    // upw=upw.trim();
-    // if(upw.length<5 || upw.length>10){
-    //     alert("회원 비밀번호는 5~10로 작성해주세요")
-    //     document.getElementById("upw").focus();
-    //     return false;
-    // }
+    let upw=document.getElementById("upw").value;
+    upw=upw.trim();
+    if(!(upw.length>=5 && upw.length<=10)){
+        alert("비밀번호 글자갯수 5~10사이 입력해 주세요.");
+        document.getElementById("upw").focus();
+        return false;
+    }
 
     //4) 주민번호 앞칸의 글자갯수가 6인지 확인하시오
-    // let jumin1=document.getElementById("jumin1").value;
-
-    // jumin1=jumin1.trim();
-    // if(jumin1.length!=6){
-    //     alert("주민등록번호 앞 6자리를 입력해주세요.")
-    //     document.getElementById("jumin1").focus();
-    //     return false;
-    // }
+    let jumin1=document.getElementById("jumin1").value;
+    jumin1=jumin1.trim();
+    if(jumin1.length!=6){
+        alert("주민번호 6글자 입력해주세요.");
+        document.getElementById("jumin1").focus();
+        return false;
+    }
 
     //5) 주민번호 뒷칸의 글자갯수가 7이면서 숫자형인지 확인하시오
     let jumin2=document.getElementById("jumin2").value;
-
     jumin2=jumin2.trim();
-    if(jumin2.length!=7){
-        alert("주민등록번호 뒤 7자리를 입력해주세요.")
-        document.getElementById("jumin2").focus();
+    jumin2=String(parseInt(jumin2));
+
+    if(jumin2.length!=7 || isNaN(jumin2)){
+        alert('주민번호(뒷칸 7글자 숫자로 입력해주세요~')
+        //기존값을 지우기 위해 빈문자열 대입
+        document.getElementById("jumin2").value="";
+        document.getElementById('jumin2').focus();
         return false;
     }
+
     //6) 약관동의에 체크했는지 확인하시오
     if(document.getElementById("agree").checked==false){
         alert("약관에 동의해 주세요!!")
