@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="ko`">
+<head>
+    <meta charset="UTF-8">
+    <title>01_미니계산기.html</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <style>
+        .txt{
+            border: 2px solid #ccffff; 
+            text-align: right;
+            font-weight: bold;
+            font-size: 20px;
+            color: black;
+            height: 30px;
+            background: #f5f5f5;
+        }
+        
+    </style>
+</head>
+
+<body>
+
+    <h3>미니 계산기</h3>
+
+    <form>
+        <table border="1">
+            <tr>
+                <td colspan="4">
+                    <input type="text" name="result" id="result" size="20" value="0" readonly class="txt">
+
+                </td>
+            </tr>
+            <tr>
+                <td><input type="button" value="7" class="btn btn-info" onclick="inputDate(7)"></td>
+                <td><input type="button" value="8" class="btn btn-info" onclick="inputDate(8)"></td>
+                <td><input type="button" value="9" class="btn btn-info" onclick="inputDate(9)"></td>
+                <td><input type="button" value="÷" class="btn btn-info" onclick="operator('/')"></td>
+            </tr>
+            <tr>
+                <td><input type="button" value="4" class="btn btn-info" onclick="inputDate(4)"></td>
+                <td><input type="button" value="5" class="btn btn-info" onclick="inputDate(5)"></td>
+                <td><input type="button" value="6" class="btn btn-info" onclick="inputDate(6)"></td>
+                <td><input type="button" value="*" class="btn btn-info" onclick="operator('*')"></td>
+            </tr>
+            <tr>
+                <td><input type="button" value="1" class="btn btn-info" onclick="inputDate(1)"></td>
+                <td><input type="button" value="2" class="btn btn-info" onclick="inputDate(2)"></td>
+                <td><input type="button" value="3" class="btn btn-info" onclick="inputDate(3)"></td>
+                <td><input type="button" value="-" class="btn btn-info" onclick="operator('-')"></td>
+            </tr>
+            <tr>
+                <td><input type="button" value="0" class="btn btn-info" onclick="inputDate(0)"></td>
+                <td><input type="button" value="." class="btn btn-info"></td>
+                <td><input type="button" value="=" class="btn btn-info" onclick="compute()"></td>
+                <td><input type="button" value="+" class="btn btn-info" onclick="operator('+')"></td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <input type="button" value="←" class="btn btn-success" onclick="backspace()">
+                </td>
+                <td colspan="2">
+                    <input type="button" value="C" class="btn btn-danger" onclick="cls()">
+                </td>
+            </tr>
+        </table>
+    </form>
+
+    <script>
+
+        //1) C 버튼을 클릭하면 id=result에 0 대입
+        function cls(){ //cls() 시작
+            document.getElementById("result").value = 0;
+        }
+
+        //2) 클릭한 숫자 버튼에 맞는 숫자를 출력하기
+        function inputDate(su){ //su 매개변수 parameter
+            // alert(su);
+            //전달받은 su변수값을 id=result에 대입
+            // document.getElementById("result").value += su;
+
+            su = Number(document.getElementById("result").value + su);
+            document.getElementById("result").value = su;
+        }   //cls() 끝
+
+        //3) 
+        function backspace(){ //backspace() 시작
+            let result=document.getElementById("result").value;
+            // alert(result)
+            // alert(result.length) //확인절차
+
+            //b) 처음 글자부터 마지막 글자를 제외시키고 문자열 가져오기(substring())
+            //예) 입력문자열이 "789"라고 가정했을 때
+            let len=result.length;          //3
+            // alert(result.substring(0,2))    //"78"
+            // alert(result.substring(0,len-1)) //"78"
+
+            //C 분리된 b)문자열을 다시 id=result에 대입하기
+            // 단, 글자갯수가 1개이면 0으로 다시 대입
+            if(len==1) {
+                document.getElementById("result").value=0;
+            } else{
+                document.getElementById("result").value=result.substring(0, len-1)
+            }
+        } //backspace() 끝
+
+
+        //4)연산에 필요한 전역변수 선언하기
+
+        function operator(kind){ //operator() 시작
+            //alert(kind)
+
+            //5)클릭한 연산기호를 전역변수 op에 저장하기
+            op=kind;
+
+            //6)현재 id=result가 가지고 있는 값을 num1에 저장하기
+            num1=Number(document.getElementById("result").value)
+
+            //7)두번째 수를 입력받기 위해 id=result값을 초기화하기
+            cls();
+
+        }//operator() 끝
+
+        function compute(){ //compute() 시작
+            //8)계산에 필요한 두번째 수를 num2에 저장하기
+            num2=Number(document.getElementById("result").value);
+
+            // alert(op);
+            // alert(num1);
+            // alert(num2);
+
+            //참조 : https://www.w3schools.com/jsref/jsref_eval.asp
+
+            //9)계산해서 결과 출력하기
+            document.getElementById("result").value = eval(num1 + op + num2);
+
+        } //compute() 끝
+    </script>
+    
+</body>
+</html>
