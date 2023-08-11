@@ -86,8 +86,38 @@
         document.write("<hr>");
 
         //문제) 주민번호를 이용해서 나이, 성별을 구하시요
+        let jumin="190810-4123456";
+        let myYear=parseInt(jumin.substring(0,2));    //19태어난 연도
+        let myCode=parseInt(jumin.substring(7,8));       //성별코드
+        let myAge=0;
 
+        //올해년도
+        const d=new Date();
+        let cYear=d.getFullYear();          //2023
 
+        //태어난 년도 완성하기
+        switch(myCode){
+            case 1: 
+            case 2: myYear = myYear+1900; break;
+            case 3: 
+            case 4: myYear = myYear+2000; break;
+        }
+
+        //나이 구하기
+        myAge = cYear-myYear
+        document.write("나이 : " + myAge + "<hr>")
+
+        //성별구하기
+        switch(myCode%2){
+            case 0 : document.write("성별 : 여자<hr>"); break;
+            case 1 : document.write("성별 : 남자<hr>"); break;
+        }
+
+        if(myCode==1 || myCode ==3){
+            document.write("성별 : 남자<hr>");
+        } else if(myCode == 2 || myCode == 4) {
+            document.write("성별 : 여자<hr>");
+        }
     </script>
     
 </body>
