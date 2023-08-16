@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>07_다중마커.html</title>
+</head>
+<body>
+    
+    <div id="map" style="width:100%;height:350px;"></div>
+
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=f95805f8f77d9deff00c93e10ba90efb"></script>
+<script>
+var mapContainer = document.getElementById('map'), // 지도를 표시할 div  
+    mapOption = { 
+        center: new kakao.maps.LatLng(37.498950240163204, 127.03177578904257), // 지도의 중심좌표
+        level: 3 // 지도의 확대 레벨
+    };
+
+var map = new kakao.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
+ 
+// 마커를 표시할 위치와 내용을 가지고 있는 객체 배열입니다 
+var positions = [
+    {
+        content: '<div>스타벅스 국기원사거리점</div>', 
+        latlng: new kakao.maps.LatLng(37.500196141700144, 127.03157873804095)
+    },
+    {
+        content: '<div>스타벅스 역삼포스코점</div>', 
+        latlng: new kakao.maps.LatLng(37.499719482996305, 127.03381033592771)
+    },
+    {
+        content: '<div>스타벅스 아크플레이스점</div>', 
+        latlng: new kakao.maps.LatLng(37.499889718596975, 127.03471155815123)
+    },
+    {
+        content: '<div>스타벅스 강남역신분당역사점</div>',
+        latlng: new kakao.maps.LatLng(37.49819114216699, 127.02834210955893)
+    },
+    {
+        content: '<div>스타벅스 강남R점</div>',
+        latlng: new kakao.maps.LatLng(37.497968447096845, 127.02868659737761)
+    }, {
+        content: '<div>스타벅스 강남비젼타워점</div>',
+        latlng: new kakao.maps.LatLng(37.49654115837922, 127.02969454321752)
+    }, {
+        content: '<div>스타벅스 몬테소리점</div>',
+        latlng: new kakao.maps.LatLng(37.498345097376735, 127.02683746437737)
+    }, {
+        content: '<div>스타벅스 강남GT타워점</div>',
+        latlng: new kakao.maps.LatLng(37.49811605173907, 127.02586310568692)
+    }, {
+        content: '<div>스타벅스 강남2점</div>',
+        latlng: new kakao.maps.LatLng(37.499905452091944, 127.02571875625127)
+    }, {
+        content: '<div>스타벅스 강남오거리점</div>',
+        latlng: new kakao.maps.LatLng(37.502152878183175, 127.02759529891456)
+    },
+];
+
+for (var i = 0; i < positions.length; i ++) {
+    // 마커를 생성합니다
+    var marker = new kakao.maps.Marker({
+        map: map, // 마커를 표시할 지도
+        position: positions[i].latlng // 마커의 위치
+    });
+
+    // 마커에 표시할 인포윈도우를 생성합니다 
+    var infowindow = new kakao.maps.InfoWindow({
+        content: positions[i].content // 인포윈도우에 표시할 내용
+    });
+
+    // 마커에 mouseover 이벤트와 mouseout 이벤트를 등록합니다
+    // 이벤트 리스너로는 클로저를 만들어 등록합니다 
+    // for문에서 클로저를 만들어 주지 않으면 마지막 마커에만 이벤트가 등록됩니다
+    kakao.maps.event.addListener(marker, 'mouseover', makeOverListener(map, marker, infowindow));
+    kakao.maps.event.addListener(marker, 'mouseout', makeOutListener(infowindow));
+}
+
+// 인포윈도우를 표시하는 클로저를 만드는 함수입니다 
+function makeOverListener(map, marker, infowindow) {
+    return function() {
+        infowindow.open(map, marker);
+    };
+}
+
+// 인포윈도우를 닫는 클로저를 만드는 함수입니다 
+function makeOutListener(infowindow) {
+    return function() {
+        infowindow.close();
+    };
+}
+
+/* 아래와 같이도 할 수 있습니다 */
+/*
+for (var i = 0; i < positions.length; i ++) {
+    // 마커를 생성합니다
+    var marker = new kakao.maps.Marker({
+        map: map, // 마커를 표시할 지도
+        position: positions[i].latlng // 마커의 위치
+    });
+
+    // 마커에 표시할 인포윈도우를 생성합니다 
+    var infowindow = new kakao.maps.InfoWindow({
+        content: positions[i].content // 인포윈도우에 표시할 내용
+    });
+
+    // 마커에 이벤트를 등록하는 함수 만들고 즉시 호출하여 클로저를 만듭니다
+    // 클로저를 만들어 주지 않으면 마지막 마커에만 이벤트가 등록됩니다
+    (function(marker, infowindow) {
+        // 마커에 mouseover 이벤트를 등록하고 마우스 오버 시 인포윈도우를 표시합니다 
+        kakao.maps.event.addListener(marker, 'mouseover', function() {
+            infowindow.open(map, marker);
+        });
+
+        // 마커에 mouseout 이벤트를 등록하고 마우스 아웃 시 인포윈도우를 닫습니다
+        kakao.maps.event.addListener(marker, 'mouseout', function() {
+            infowindow.close();
+        });
+    })(marker, infowindow);
+}
+*/
+</script>
+</body>
+</html>
